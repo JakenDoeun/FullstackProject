@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Houses</title>
+</head>
+<body>
+  <h1>Available Houses</h1>
+  <ul>
+    <% houses.forEach(house => { %>
+      <li>
+        <a href="/house/<%= house.id %>"><%= house.address %></a> - <%= house.price %>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
