@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+   
+}
+.hero-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.hero-section p {
+    margin: 20px 0;
+    color: #666;
+}
+.search-bar {
+    max-width: 600px;
+    margin: 20px auto;
+}
+.search-bar input {
+    padding: 7px 20px;
+    border-radius: 25px 0 0 25px;
+    border-right: none;
+}
+.search-bar button {
+    border-radius: 0 25px 25px 0;
+    border-left: none;
+}
+.property-options {
+    margin-top: 20px;
+}
+.property-options button {
+    border-radius: 25px;
+    margin: 5px;
+}
+.illustration {
+    margin-top: 50px;
+}
+.illustration img {
+    max-width: 100%;
+}
+.nav-link{
+    font-size:  12;
+    color: black;
+}
+.btn-outline-secondary{
+    font-size: smaller;
+    border-radius: 40px;
+    padding: 7px 15px;
+    color: black;
+}
+.nav{
+    gap: 20px;
+}
