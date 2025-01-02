@@ -1,17 +1,18 @@
 require('dotenv').config();
 const express = require('express');
+const app = express();
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-const app = express();
 const productRoutes = require('./routes/productRoutes');
-// Middleware to parse URL-encoded data
+
+// Middleware
 app.use(express.urlencoded({ extended: true }));
 
 // Session middleware for storing session data
 app.use(session({ 
-    secret: 'your-secret-key', // Use a proper secret key here
+    secret: 'cyber cadt idri idt idg', // Use a proper secret key here
     saveUninitialized: true, 
     resave: true 
 }));
@@ -30,7 +31,8 @@ app.set('view engine', 'ejs');
 
 // Serve static files (e.g., CSS, images)
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/product',productRoutes);
+app.use(productRoutes);
+
 // Mock model to simulate fetching data from a database (you can replace this with actual DB queries)
 
 
@@ -38,7 +40,8 @@ app.use('/product',productRoutes);
 app.get('/', (req, res) => {
     res.redirect('/houses'); // Redirect to the /houses route
 });
-// Route to render house_list.ejs
+
+// // Route to render house_list.ejs
 app.get('/houses', (req, res) => {
     res.render('product/house_list', {
         title: 'House List',

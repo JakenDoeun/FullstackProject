@@ -43,16 +43,17 @@ body {
 .illustration img {
     max-width: 100%;
 }
-.nav-link{
-    font-size:  12;
-    color: black;
-}
-.btn-outline-secondary{
-    font-size: smaller;
-    border-radius: 40px;
-    padding: 7px 15px;
-    color: black;
-}
+
+
 .nav{
     gap: 20px;
+}
+.card {
+    border: 1px solid #ddd; /* Optional: add border */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
