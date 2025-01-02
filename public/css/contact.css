@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  .contact-header {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  .contact-section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .contact-form, .contact-info {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+  }
+  .form-control {
+    border-radius: 10px;
+  }
+  .btn-submit {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 10px;
+  }
+  .btn-submit:hover {
+    background-color: #0056b3;
+  }
+  .map-container {
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
