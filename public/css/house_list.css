@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-   
 }
 .hero-section {
     text-align: center;
@@ -43,11 +42,6 @@ body {
 .illustration img {
     max-width: 100%;
 }
-
-
-.nav{
-    gap: 20px;
-}
 .card {
     border: 1px solid #ddd; /* Optional: add border */
 }
@@ -56,4 +50,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.badge-edit {
+    font-weight: lighter; 
+    font-size: 10px; 
+    background-color: #1F4B43;
+    padding: 8px 8px 6px 8px;
+    text-align: center; /* Centers text horizontally */
+    display: inline-block; /* Ensures the span behaves predictably */
+    line-height: 1; /* Fine-tune vertical alignment if necessary */
 }
