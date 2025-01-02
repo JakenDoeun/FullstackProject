@@ -1,9 +1,9 @@
 const Product = require("../models/productModel");
 const upload = require('../config/multer');
 
-exports.getAllProducts = async (req, res) => {
+exports.getAllProducts_buy = async (req, res) => {
     try {
-        const products = await Product.getAll();
+        const products = await Product.getAll_sale();
         console.log(products)
         let title = "List of Properties";
         res.render('product/house_list', {products,title});
@@ -13,6 +13,17 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
+exports.getAllProducts_rent = async (req, res) => {
+    try {
+        const products = await Product.getAll_rent();
+        console.log(products)
+        let title = "Properties For Rent";
+        res.render('product/house_list_rent', {products,title});
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+        res.status(500).send("Error fetching products");
+    }
+};
 
 exports.renderCreateForm = (req, res) => {
     let title = "Sell House";

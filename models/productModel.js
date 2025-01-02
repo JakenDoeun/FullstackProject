@@ -7,6 +7,16 @@ class Product {
         return rows;
     }
 
+    static async getAll_sale() {
+        const [rows_sale] = await db.query('SELECT * FROM house_info WHERE type = \'SELL\'');
+        return rows_sale;
+    }
+
+    //Get all product for rent
+    static async getAll_rent() {
+        const [rows_rent] = await db.query('SELECT * FROM house_info WHERE type = \'RENT\' ');
+        return rows_rent
+    }    
     // Create a new product
     static async create(data) {
         const result = await db.query(
