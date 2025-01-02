@@ -1,60 +1,101 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
 
-  .nav-link {
-    margin-right: 15px;
-    color: #000;
-    text-decoration: none;
-  }
+.details-row {
+  display: flex;
+  margin-top: 30px;
+  gap: 50px; /* Increase the gap between the sections */
+}
 
-  .nav-link:hover {
-    text-decoration: underline;
-  }
+.image-container {
+  flex: 1 1 40%;
+  border-radius: 15px;
+  overflow: hidden;
+  height: auto;
+}
 
-  .container {
-    width: 80%;
-    margin: auto;
-  }
+.image-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
 
-  .house-details-wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-  }
+.details {
+  flex: 1 1 60%;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .image-container, .details {
-    flex: 1;
-    margin: 0 10px;
-    height: 500px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.details h2 {
+  margin-bottom: 15px;
+}
 
-  .image-container {
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-  }
+.button-section {
+  text-align: center;
+  margin-top: 20px;
+}
 
-  .image-container img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    object-fit: cover;
-  }
+.btn {
+  margin: 5px;
+}
 
-  .details {
-    padding: 20px;
-    overflow-y: auto;
-  }
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
 
-  .btn {
-    margin-right: 10px;
-  }
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding-left: 0;
+  margin: 0;
+}
+
+.navbar .nav-item {
+  padding: 10px;
+}
+
+.navbar .nav-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.navbar .add-property-btn {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.navbar .add-property-btn svg {
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  flex-shrink: 0;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

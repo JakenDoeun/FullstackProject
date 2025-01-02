@@ -3,37 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= house.title %> Details</title>
+  <title>House1 Details</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="/public/css/show.css">
+  <link rel="stylesheet" href="/FullstackProject/public/css/show.css">
 </head>
 <body>
 
   <!-- Navigation Bar -->
-  <%- include('../partials/header') %>
-
-  <!-- House Image and Details Section (Side by Side) -->
-  <div class="house-details-wrapper">
-    <!-- House Image Section -->
-    <div class="image-container">
-      <img src="<%= house.image || 'default-image.jpg' %>" alt="<%= house.title || 'No Title' %>"> <!-- House Image -->
+  <header class="container py-3">
+    <div class="header-container">
+      <div class="header-logo">
+        <img src="logo.svg fill.png" alt="Logo" width="110">
+      </div>
+      <nav class="navbar header-nav">
+        <ul class="nav">
+          <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Buy</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Selling</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Rent</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="#" class="btn btn-outline-secondary add-property-btn">Add Property</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="10" r="3"></circle><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path></svg>
+      </nav>
     </div>
-    <!-- House Details Section -->
-    <div class="details">
-      <h2><%= house.title || 'No Title' %></h2>
-      <p><strong>Location:</strong> <%= house.location || 'No Location' %></p>
-      <p><strong>Price:</strong> $<%= house.price || '0' %></p>
-      <p><strong>Description:</strong> <%= house.description || 'No Description' %></p>
-      <p><strong>Bedrooms:</strong> <%= house.bedrooms || '0' %></p>
-      <p><strong>Bathrooms:</strong> <%= house.bathrooms || '0' %></p>
-      <p><strong>Square Feet:</strong> <%= house.squareFeet || '0' %></p>
-      <a href="/buy/<%= house.id || '#' %>" class="btn btn-outline-primary">Buy Now</a>
-      <a href="/tour/<%= house.id || '#' %>" class="btn btn-outline-secondary">Schedule a Tour</a>
-      <a href="/house_list" class="btn btn-outline-secondary">Back to House List</a>
+  </header>
+
+  <!-- Page Title -->
+  <h1 class="container" style="margin: 50px 0 0;">House Details:</h1>
+
+  <!-- House Details Section -->
+  <div class="container my-5">
+    <div class="details-row">
+      <!-- House Image Section -->
+      <div class="image-container">
+        <img src="image2.jpg" alt="Modern Villa">
+      </div>
+
+      <!-- House Information Section -->
+      <div class="details">
+        <h2>Modern Villa</h2>
+        <p><strong>Location:</strong> 123 Sunshine Blvd, Florida</p>
+        <p><strong>Price:</strong> $500,000</p>
+        <p><strong>Description:</strong> Villa Serena is a luxurious 5-bedroom villa located in the heart of Costa del Sol, offering stunning views of the Mediterranean Sea. Set on a private estate, the villa features expansive gardens, a large swimming pool, and ample indoor and outdoor living spaces.</p>
+        <p><strong>Bedrooms:</strong> 4</p>
+        <p><strong>Bathrooms:</strong> 3</p>
+        <p><strong>Square Feet:</strong> 2500</p>
+        <div class="button-section">
+          <a href="/buy/1" class="btn btn-primary">Buy Now</a>
+          <a href="/tour/1" class="btn btn-success">Schedule a Tour</a>
+          <a href="/house_list" class="btn btn-secondary">Back to House List</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <%- include('../partials/footer') %>
 </body>
 </html>
