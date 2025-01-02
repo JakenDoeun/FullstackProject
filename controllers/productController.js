@@ -4,6 +4,12 @@ const upload = require('../config/multer');
 exports.getAllProducts = async (req, res) => {
     try {
         const products = await Product.getAll();
+        console.log(products)
+        products.forEach(product => {
+            if (product.img) {
+              product.img = `data:image/jpeg;base64,${product.img.toString('base64')}`;
+            }
+          });
         let title = "List of Properties";
         res.render('product/house_list', {products,title});
     } catch (err) {
