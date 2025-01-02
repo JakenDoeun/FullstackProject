@@ -6,7 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 
 const productRoutes = require('./routes/productRoutes');
-
+const userRoutes = require('./routes/userRoutes');
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 
@@ -32,8 +32,8 @@ app.set('view engine', 'ejs');
 // Serve static files (e.g., CSS, images)
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/",productRoutes); // This links all product-related routes to '/' and sub-routes
-
+// app.use("/", userRoutes); // This links all product-related routes to '/' and sub-routes
+app.use("/", productRoutes);
 // Start the server
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {

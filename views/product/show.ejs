@@ -1,32 +1,41 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="/css/show.css">
 
-  <!-- Page Title -->
-  <h1 class="container" style="margin: 50px 0 0;">House Details:</h1>
+<!-- Page Title -->
+<div class="container text-center my-5">
+  <h2 class="page-title">House Details</h2>
+</div>
 
-  <!-- House Details Section -->
-  <div class="container my-5">
-    <div class="details-row">
-      <!-- House Image Section -->
-      <div class="image-container">
-        <img src="image2.jpg" alt="Modern Villa">
+<!-- House Details Section -->
+<div class="container details-container">
+  <div class="details-row">
+    <!-- House Image Section -->
+    <div class="image-container">
+      <img src="<%= product.img %>" alt="<%= product.name %>" class="house-image">
+    </div>
+  
+    <!-- House Information Section -->
+    <div class="details">
+      <h2 class="house-title"><%= product.name %></h2>
+      <p class="description"><strong>Description:</strong> <%= product.description || "No description available" %></p>
+      <p class="price"><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> $<%= product.price %></p>
+      <p class="location"><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> <%= product.address_info %></p>
+
+      <div class="features">
+        <p><i class="fas fa-bed"></i> <strong>Bedrooms:</strong> <%= product.bedroom %></p>
+        <p><i class="fas fa-bath"></i> <strong>Bathrooms:</strong> <%= product.bathroom %></p>
+        <p><i class="fas fa-ruler-combined"></i> <strong>Area:</strong> <%= product.size %> sq ft</p>
       </div>
 
-      <!-- House Information Section -->
-      <div class="details">
-        <h2>Modern Villa</h2>
-        <p><strong>Location:</strong> 123 Sunshine Blvd, Florida</p>
-        <p><strong>Price:</strong> $500,000</p>
-        <p><strong>Description:</strong> Villa Serena is a luxurious 5-bedroom villa located in the heart of Costa del Sol, offering stunning views of the Mediterranean Sea. Set on a private estate, the villa features expansive gardens, a large swimming pool, and ample indoor and outdoor living spaces.</p>
-        <p><strong>Bedrooms:</strong> 4</p>
-        <p><strong>Bathrooms:</strong> 3</p>
-        <p><strong>Square Feet:</strong> 2500</p>
-        <div class="button-section">
-          <a href="/buy/1" class="btn btn-primary">Buy Now</a>
-          <a href="/tour/1" class="btn btn-success">Schedule a Tour</a>
-          <a href="/house_list" class="btn btn-secondary">Back to House List</a>
-        </div>
+      <div class="button-section">
+        <a href="#" class="btn btn-primary btn-custom">Buy Now</a>
+        <a href="#schedule-tour" class="btn btn-success btn-custom">Schedule a Tour</a>
+        <a href="/" class="btn btn-secondary btn-custom">Back to House List</a>
       </div>
     </div>
   </div>
+</div>
 
 <%- include('../partials/footer') %>
