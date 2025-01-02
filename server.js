@@ -31,27 +31,11 @@ app.set('view engine', 'ejs');
 
 // Serve static files (e.g., CSS, images)
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(productRoutes);
 
-// Mock model to simulate fetching data from a database (you can replace this with actual DB queries)
-
-
-// Route for the root URL
-app.get('/', (req, res) => {
-    res.redirect('/houses'); // Redirect to the /houses route
-});
-
-// // Route to render house_list.ejs
-app.get('/houses', (req, res) => {
-    res.render('product/house_list', {
-        title: 'House List',
-        products: productRoutes, // Pass the products data to the view
-        messages: req.flash() // Pass flash messages to the view
-    });
-});
+app.use("/",productRoutes); // This links all product-related routes to '/' and sub-routes
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

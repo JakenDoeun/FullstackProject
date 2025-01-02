@@ -1,9 +1,19 @@
-.nav-link{
-    font-size:  12;
+body{
+    font-family: Arial, sans-serif;
+}
+
+.nav-link {
+    font-size: 1rem !important; /* Force a consistent font size */
+    text-decoration: none; /* Ensure no underline */
     color: black;
 }
-.btn-outline-secondary{
-    font-size: smaller;
+
+.nav {
+    gap: 20px;
+}
+
+.btn-outline-secondary {
+    font-size: 0.875rem; /* Adjust button font size explicitly */
     border-radius: 40px;
     padding: 7px 15px;
     color: black;

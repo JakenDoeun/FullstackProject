@@ -46,7 +46,6 @@ class Product {
                 data.address_info,
                 data.description,
                 data.img,
-                id
             ]
         );
         return result;

@@ -5,11 +5,6 @@ exports.getAllProducts = async (req, res) => {
     try {
         const products = await Product.getAll();
         console.log(products)
-        products.forEach(product => {
-            if (product.img) {
-              product.img = `data:image/jpeg;base64,${product.img.toString('base64')}`;
-            }
-          });
         let title = "List of Properties";
         res.render('product/house_list', {products,title});
     } catch (err) {
@@ -20,13 +15,21 @@ exports.getAllProducts = async (req, res) => {
 
 
 exports.renderCreateForm = (req, res) => {
-    let title = "New Product";
+    let title = "Sell House";
     res.render('product/create', { title });
 };
 
 exports.createProduct = async (req, res) => {
     try {
-        const { name, description, price } = req.body;
+        const { type,
+            bedroom,
+            bathroom,
+            size,
+            price,
+            name,
+            address_info,
+            description,
+            } = req.body;
         let image_path = "";
 
         // If there's an uploaded file, set the image path
@@ -34,11 +37,11 @@ exports.createProduct = async (req, res) => {
             image_path = `/uploads/${req.file.filename}`;
         }
 
-        await Product.create({ name, description, price, image: image_path });
-        res.redirect("/product");
+        await Product.create({ type, bedroom, bathroom, size, price, name, address_info, description, img: image_path });
+        res.redirect("/");
     } catch (err) {
         console.error(err); // Log the error for debugging
-        let backurl = '/product';
+        let backurl = '/';
         req.flash('error', err.sqlMessage);
         return res.redirect(backurl);
     }
