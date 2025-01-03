@@ -33,7 +33,10 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use("/", userRoutes); // This links all product-related routes to '/' and sub-routes
-app.use("/", productRoutes);
+app.use("/", userRoutes);
+app.use("/houses", productRoutes);
+
+
 // Start the server
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {

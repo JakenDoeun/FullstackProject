@@ -1,16 +1,148 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Houses</title>
-</head>
-<body>
-  <h1>Available Houses</h1>
-  <ul>
-    <% houses.forEach(house => { %>
-      <li>
-        <a href="/house/<%= house.id %>"><%= house.address %></a> - <%= house.price %>
-      </li>
-    <% }) %>
-  </ul>
-</body>
-</html>
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="css/index.css">
+<section class="hero-section">
+  <h2>Find Your Perfect Home</h2>
+
+  <form class="search-bar d-flex" method="GET" action="/search">
+      <input type="text" class="form-control" placeholder="Enter Name, Keywords..." name="search">
+      <button type="submit" class="btn btn-success">Search</button>
+  </form>
+  <a href="#12" class="btn btn-outline-secondary">Recent Rent</a>
+  <a href="#13" class="btn btn-outline-secondary">Recent Sell</a>
+</section>
+
+<div>
+    <section class="trusted-companies">
+        <h3>Thousands of world's leading companies trust Space</h3>
+        <div class="logos" style="display: flex; gap: 80px;">
+            <img src="uploads\Link → bw-1.png.png" alt="Amazon Logo">
+            <img src="uploads\Link → bw-2.png.png" alt="AMD Logo">
+            <img src="uploads\Link → bw-3.png.png" alt="Cisco Logo">
+            <img src="uploads\Link → bw-4.png.png" alt="Dropcam Logo">
+            <img src="uploads\Link → bw-5.png.png" alt="Logitech Logo">
+            <img src="uploads\Link → bw-6.png.png" alt="Spotify Logo">
+        </div>
+    </section>
+</div>
+
+<div style="margin-top: 160px;">
+
+    <div class="container">
+        <h2 class="text-center" id="12">Recent Properties for Rent</h2>
+        <h5 class="text-center text-muted">Take a look</h5>
+        <div class="row g-4 mt-0 mb-0"> <!-- Adjusted for no top and bottom margin -->
+            <% if (propertiesRent && Array.isArray(propertiesRent) && propertiesRent.length > 0) { %>
+                <% propertiesRent.forEach((property, index) => { %>
+                    <div class="col-12 col-sm-6 col-md-3"> <!-- 4 cards per row -->
+                        <!-- Anchor wrapping the card -->
+                        <a href="/properties/detail/<%= property.id %>" class="text-decoration-none" style="color: inherit;"> 
+                            <div class="card h-100" style="margin: 10px;"> <!-- Added margin around the card -->
+                                <div class="position-relative">
+                                    <!-- Image -->
+                                    <img src="<%= property.img %>" class="card-img-top" alt="<%= property.name %>" style="object-fit: cover; height: 200px;">
+                                    <!-- Badge -->
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2 rounded-pill badge-edit">FOR RENT</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title mt-2"><%= property.name %></h5>
+                                    <p class="text-muted"><i class="bi bi-geo-alt"></i> <%= property.address_info %></p> <!-- Address -->
+                                    <p>
+                                        <strong><%= property.bedroom %></strong> <i class="fa-solid fa-bed"></i> | 
+                                        <strong><%= property.bathroom %></strong> <i class="fa-solid fa-bath"></i> | 
+                                        <i class="fa-regular fa-clone"></i> <strong><%= property.size %></strong> sq ft
+                                    </p>
+                                    <!-- Price -->
+                                    <p class="price fw-bold text-danger">$<%= property.price.toLocaleString() %>/month</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% if (index % 4 === 3) { %> <!-- After every 4th item, create a new row -->
+                        </div>
+                        <div class="row g-4 mt-0 mb-0">
+                    <% } %>
+                <% }); %>
+            <% } else { %>
+                <p>No properties found.</p>
+            <% } %>
+        </div>
+    </div>    
+</div>
+
+<div style="margin-top: 150px;">
+    <div class="container">
+        <h2 class="text-center" id="12">Recent Properties for Sell</h2>
+        <h5 class="text-center text-muted">Take a look</h5>
+        <div class="row g-4 mt-0 mb-0"> <!-- Adjusted for no top and bottom margin -->
+            <% if (propertiesSell && Array.isArray(propertiesSell) && propertiesSell.length > 0) { %>
+                <% propertiesSell.forEach((property, index) => { %>
+                    <div class="col-12 col-sm-6 col-md-3"> <!-- 4 cards per row -->
+                        <!-- Anchor wrapping the card -->
+                        <a href="/houses/detail/<%= property.house_id %>" class="text-decoration-none" style="color: inherit;">
+                            <div class="card h-100" style="margin: 10px;"> <!-- Added margin around the card -->
+                                <div class="position-relative">
+                                    <!-- Image -->
+                                    <img src="<%= property.img %>" class="card-img-top" alt="<%= property.title %>" style="object-fit: cover; height: 200px;">
+                                    <!-- Badge -->
+                                    <span class="badge bg-success position-absolute top-0 start-0 m-2 rounded-pill badge-edit">FOR SELL</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title mt-2"><%= property.name %></h5>
+                                    <p class="text-muted"><i class="bi bi-geo-alt"></i> <%= property.address_info %></p>
+                                    <p>
+                                        <strong><%= property.bedroom %></strong> <i class="fa-solid fa-bed"></i> | 
+                                        <strong><%= property.bathroom %></strong> <i class="fa-solid fa-bath"></i> | 
+                                        <i class="fa-regular fa-clone"></i><strong> <%= property.size %></strong> sq ft
+                                    </p>
+                                    <!-- Price -->
+                                    <p class="price fw-bold text-danger">
+                                        Price: <%= property.price.toLocaleString() %>$
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <% if (index % 4 === 3) { %> <!-- After every 4th item, create a new row -->
+                        </div>
+                        <div class="row g-4 mt-0 mb-0">
+                    <% } %>
+                <% }); %>
+            <% } else { %>
+                <p>No properties found.</p>
+            <% } %>
+        </div>
+    </div>
+    
+</div>
+
+<div style="margin-top: 150px;">
+  <div class="container my-2">
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Card 1 -->
+          <div class="col">
+              <div class="card h-90 text-center" style="background-color: #f8f9fa; border: none; padding: 20px;">
+                  <div style="margin-bottom: 20px;">
+                      <i class="fa-solid fa-house fa-4x"></i>
+                  </div>
+                  <h5>Looking for the new home?</h5>
+                  <p class="text-muted" style="font-size: 0.9em;">10 new offers every day, 350 offers on site, trusted by a community of thousands of users.</p>
+                  <a class="text-decoration-none btn btn-success" href="/houses/house_sell"> Started → </a>
+              </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col">
+              <div class="card h-90 text-center" style="background-color: #fff5f5; border: none; padding: 20px;">
+                  <div style="margin-bottom: 20px;">
+                      <i class="fa-solid fa-house-chimney fa-4x"></i>
+                  </div>
+                  <h5>Want to sell your home?</h5>
+                  <p class="text-muted" style="font-size: 0.9em;">10 new offers every day, 350 offers on site, trusted by a community of thousands of users.</p>
+                  <a class="text-decoration-none btn btn-success" href="/houses/create"> Started → </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<%- include('../partials/footer') %>

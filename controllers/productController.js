@@ -61,10 +61,11 @@ exports.createProduct = async (req, res) => {
 exports.getProductById = async (req, res) => {
     try {
         const product = await Product.getById(req.params.id);
+        console.log('Requested Product ID:', req.params.id);
         let title = "Show product";
         if (product) {
             res.render('product/show', { product, title });
-        } else {
+        } else {    
             res.status(404).send('Product not found');
         }
     } catch (err) {
@@ -115,5 +116,31 @@ exports.deleteProduct = async (req, res) => {
     } catch (err) {
         console.error(err); // Log the error for debugging
         res.status(500).send('Error deleting product');
+    }
+};
+
+exports.renderHomePage = async (req, res) => {
+    try {
+        // Fetch properties for rent and sell from the database
+        const propertiesRent = await Product.getFour_random_sale();
+        const propertiesSell = await Product.getFour_random_rent();
+        const title = "Home"
+        res.render('index/index', {
+            propertiesRent,
+            propertiesSell, title
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error fetching properties.");
+    }
+};
+
+exports.contact = async (req, res) => {
+    try {
+        let title = "Contact";
+        res.render('product/contact', {title});
+    } catch (err) {
+        console.error(err); // Log the error for debugging
+        res.status(500).send("Error fetching products");
     }
 };

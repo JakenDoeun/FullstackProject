@@ -16,28 +16,30 @@
         <% if (products && Array.isArray(products) && products.length > 0) { %>
             <% products.forEach((product, index) => { %>
                 <div class="col-12 col-sm-6 col-md-3"> <!-- 4 cards per row -->
-                    <div class="card h-100" style="margin: 10px;"> <!-- Added margin around the card -->
-                        <div class="position-relative">
-                            <!-- Image -->
-                            <img src="<%= product.img %>" class="card-img-top" alt="<%= product.name %>" style="object-fit: cover; height: 200px;">
-                            <!-- Badge -->
-                            <span class="badge bg position-absolute top-0 start-0 m-2 rounded-pill badge-edit" >FOR <%= product.type %></span> <!-- Product Type -->
+                    <a href="/<%=product.house_id%>" class="text-decoration-none" style="color: inherit;">
+                        <div class="card h-100" style="margin: 10px;"> <!-- Added margin around the card -->
+                            <div class="position-relative">
+                                <!-- Image -->
+                                <img src="<%= product.img %>" class="card-img-top" alt="<%= product.name %>" style="object-fit: cover; height: 200px;">
+                                <!-- Badge -->
+                                <span class="badge bg position-absolute top-0 start-0 m-2 rounded-pill badge-edit" >FOR <%= product.type %></span> <!-- Product Type -->
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mt-2"><%= product.name %></h5>
+                                <p class="text-muted"><i class="bi bi-geo-alt"></i> <%= product.address_info %></p> <!-- Address -->
+                                <p>
+                                    <strong><%= product.bedroom %></strong> <i class="fa-solid fa-bed"></i> | <strong><%= product.bathroom %></strong> <i class="fa-solid fa-bath"></i> | <i class="fa-regular fa-clone"></i><strong> <%= product.size %></strong> sq ft
+                                </p>
+                                <!-- Price -->
+                                <p class="price fw-bold text-danger">
+                                    Price: 
+                                    <%= product.type === 'RENT' 
+                                        ? `${product.price.toLocaleString()}$/month` 
+                                        : `${product.price.toLocaleString()}$` %>
+                                </p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title mt-2"><%= product.name %></h5>
-                            <p class="text-muted"><i class="bi bi-geo-alt"></i> <%= product.address_info %></p> <!-- Address -->
-                            <p>
-                                <strong><%= product.bedroom %></strong> <i class="fa-solid fa-bed"></i> | <strong><%= product.bathroom %></strong> <i class="fa-solid fa-bath"></i> | <i class="fa-regular fa-clone"></i><strong> <%= product.size %></strong> sq ft
-                            </p>
-                             <!-- Price -->
-                            <p class="price fw-bold text-danger">
-                                Price: 
-                                <%= product.type === 'RENT' 
-                                      ? `${product.price}$/month` 
-                                      : `${product.price}$` %>
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <% if (index % 4 === 3) { %> <!-- After every 4th item, create a new row -->
                     </div>
