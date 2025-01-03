@@ -61,3 +61,24 @@ exports.logout = async (req, res) => {
         res.redirect('/'); // Redirect to the register page
     });
 };
+// Get the user profile (for display)
+exports.getUserProfile = async (req, res) => {
+    try {
+        const userId = req.session.userId; // Get user ID from the session
+        if (!userId) {
+            return res.redirect('user/login'); // If not logged in, redirect to the login page
+        }
+
+        // Fetch the user details using the model
+        const user = await Users.getUserById(userId);
+
+        if (user) {
+            res.render('user/profile', { title: 'User Profile', user }); // Render user profile
+        } else {
+            res.status(404).send('User not found'); // If no user found with the given ID
+        }
+    } catch (error) {
+        console.error('Error fetching user profile:', error);
+        res.status(500).send('An error occurred while fetching your profile.');
+    }
+};

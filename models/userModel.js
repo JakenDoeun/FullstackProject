@@ -30,11 +30,22 @@ class Users {
             return null; // Return null if no matching user is found
         }
     }
-
+    static async getUserById(userId) {
+        try {
+          const [rows] = await db.query(
+            "SELECT id, username, firstname, lastname, email, phone_number FROM user_info WHERE id = ?",
+            [userId]
+          );
     
+          if (rows.length > 0) {
+            return rows[0]; // Return the user data
+          } else {
+            return null; // Return null if user is not found
+          }
+        } catch (error) {
+          throw new Error('Error fetching user data: ' + error.message); // Error handling
+        }
+    
+    }
 }
-
-
-
-
 module.exports = Users;
